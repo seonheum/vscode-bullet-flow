@@ -12,6 +12,9 @@
     "Other"
   ],
   "main": "./out/extension.js",
+  "activationEvents": [
+    "onCommand:bulletFlow.applyBullets"
+  ],
   "keywords": [
     "bullet",
     "list",
@@ -111,7 +114,7 @@
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "package": "vsce package"
+  "package": "vsce package --out out/bulletflow-`node -p \"require('./package.json').version\"`.vsix"
   },
   "devDependencies": {
     "@types/node": "^24.2.1",
