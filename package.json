@@ -1,0 +1,131 @@
+{
+  "name": "bulletflow",
+  "displayName": "BulletFlow",
+  "description": "Indentation 기반으로 계층을 분석해 지정한 bullet set으로 문서 행에 bullet point를 일괄 적용/교체해 흐름을 정돈합니다.",
+  "version": "0.0.1",
+  "publisher": "seonheum",
+  "author": "Seonheum",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "keywords": [
+    "bullet",
+    "list",
+    "indentation",
+    "outline",
+    "markdown",
+    "hierarchy",
+    "formatting",
+    "profile"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "bulletFlow.applyBullets",
+        "title": "BulletFlow: Apply Bullets"
+      },
+      {
+        "command": "bulletFlow.selectBulletSet",
+        "title": "BulletFlow: Select Bullet Set Profile"
+      },
+      {
+        "command": "bulletFlow.openConfigFile",
+        "title": "BulletFlow: Open/Create .bulletflow.json"
+      },
+      {
+        "command": "bulletFlow.applyBulletsSelection",
+        "title": "BulletFlow: Apply Bullets (Selection Only)"
+      },
+      {
+        "command": "bulletFlow.applyBulletsSelectionRelative",
+        "title": "BulletFlow: Apply Bullets (Selection Only, Relative Levels)"
+      },
+      {
+        "command": "bulletFlow.removeBullets",
+        "title": "BulletFlow: Remove Bullets"
+      },
+      {
+        "command": "bulletFlow.removeBulletsSelection",
+        "title": "BulletFlow: Remove Bullets (Selection Only)"
+      }
+    ],
+    "configuration": {
+      "title": "BulletFlow",
+      "properties": {
+        "bulletFlow.bulletSet": {
+          "type": "array",
+          "description": "계층(level)에 대응하는 bullet 문자열 배열. level index가 배열 길이를 초과하면 마지막 항목이 재사용됩니다. 공백 혹은 공백 포함 문자열 지정 가능. 예: [\"\", \"∘ \", \"· \"], 혹은 [\"*\", \"ᆫ\", \":\"].",
+          "default": [
+            "•",
+            "∘",
+            "·",
+            ">"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "bulletFlow.removeExisting": {
+          "type": "boolean",
+          "default": true,
+          "description": "행 시작부 기존 bullet 후보를 감지하면 제거 후 새 bullet을 적용합니다."
+        },
+        "bulletFlow.indentSizeFallback": {
+          "type": "number",
+          "default": 2,
+          "description": "탭이 없고 공백 들여쓰기 단위 추론 실패 시 사용할 기본 공백 개수."
+        },
+        "bulletFlow.bulletSetProfiles": {
+          "type": "object",
+          "default": {
+            "default": { "name": "Default", "bullets": ["•", "∘", "·", ">"] },
+            "circle": { "name": "Circle", "bullets": ["•", "∘", "·", ">"] },
+            "circleNoTop": { "name": "Circle (no top)", "bullets": ["", "•", "∘", "·", ">"] },
+            "simple": { "name": "Simple", "bullets": ["-", "•", "∘", "·", ">"] },
+            "simpleNoTop": { "name": "Simple (no top)", "bullets": ["", "-", "•", "∘", "·", ">"] },
+            "rectangle": { "name": "Rectangle", "bullets": ["■", "□", "▪", "▫"] },
+            "rectangleNoTop": { "name": "Rectangle (no top)", "bullets": ["", "■", "□", "▪", "▫"] },
+            "korean": { "name": "Korean", "bullets": ["*", "ᆫ", ":"] },
+            "koreanNoTop": { "name": "Korean (no top)", "bullets": ["", "*", "ᆫ", ":"] }
+          },
+          "description": "프로필 키 -> {name, bullets[]} 매핑. 기존 배열 형태([\"•\",...])도 호환되며 name+bullets 객체를 권장. .bulletflow.json 파일 내용이 설정을 덮어씁니다."
+        },
+        "bulletFlow.activeProfile": {
+          "type": "string",
+          "default": "default",
+          "description": "현재 사용할 bullet set 프로필 이름. 프로필이 없으면 bulletFlow.bulletSet 사용."
+        },
+        "bulletFlow.configFileEnabled": {
+          "type": "boolean",
+          "default": true,
+          "description": ".bulletflow.json 파일을 (워크스페이스 루트) 탐색/감시하여 프로필 로드. 비활성화 시 VS Code 설정만 사용."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^24.2.1",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.4.0",
+    "vsce": "^2.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seonheum/vscode-bullet-flow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/seonheum/vscode-bullet-flow/issues"
+  },
+  "homepage": "https://github.com/seonheum/vscode-bullet-flow#readme",
+  "license": "MIT"
+}
