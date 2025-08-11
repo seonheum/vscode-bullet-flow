@@ -1,0 +1,13 @@
+src/**
+tsconfig.json
+*.tsbuildinfo
+
+**/*.test.*
+**/*.spec.*
+.vscode/**
+.git/**
+.gitignore
+**/.DS_Store
+**/*.map
+
+node_modules/@types/**
