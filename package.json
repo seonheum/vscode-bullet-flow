@@ -2,7 +2,7 @@
   "name": "bulletflow",
   "displayName": "BulletFlow",
   "description": "Indentation 기반으로 계층을 분석해 지정한 bullet set으로 문서 행에 bullet point를 일괄 적용/교체해 흐름을 정돈합니다.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "seonheum",
   "author": "Seonheum",
   "engines": {
@@ -61,10 +61,10 @@
       "properties": {
         "bulletFlow.bulletSet": {
           "type": "array",
-          "description": "계층(level)에 대응하는 bullet 문자열 배열. level index가 배열 길이를 초과하면 마지막 항목이 재사용됩니다. 공백 혹은 공백 포함 문자열 지정 가능. 예: [\"\", \"∘ \", \"· \"], 혹은 [\"*\", \"ᆫ\", \":\"].",
+          "description": "계층(level)에 대응하는 bullet 문자열 배열. level index가 배열 길이를 초과하면 마지막 항목이 재사용됩니다. 공백 혹은 공백 포함 문자열 지정 가능. 예: [\"\", \"◦ \", \"· \"], 혹은 [\"*\", \"ᆫ\", \":\"].",
           "default": [
             "•",
-            "∘",
+            "◦",
             "·",
             ">"
           ],
@@ -85,11 +85,11 @@
         "bulletFlow.bulletSetProfiles": {
           "type": "object",
           "default": {
-            "default": { "name": "Default", "bullets": ["•", "∘", "·", ">"] },
-            "circle": { "name": "Circle", "bullets": ["•", "∘", "·", ">"] },
-            "circleNoTop": { "name": "Circle (no top)", "bullets": ["", "•", "∘", "·", ">"] },
-            "simple": { "name": "Simple", "bullets": ["-", "•", "∘", "·", ">"] },
-            "simpleNoTop": { "name": "Simple (no top)", "bullets": ["", "-", "•", "∘", "·", ">"] },
+            "default": { "name": "Default", "bullets": ["•", "◦", "·", ">"] },
+            "circle": { "name": "Circle", "bullets": ["•", "◦", "·", ">"] },
+            "circleNoTop": { "name": "Circle (no top)", "bullets": ["", "•", "◦", "·", ">"] },
+            "simple": { "name": "Simple", "bullets": ["-", "•", "◦", "·", ">"] },
+            "simpleNoTop": { "name": "Simple (no top)", "bullets": ["", "-", "•", "◦", "·", ">"] },
             "rectangle": { "name": "Rectangle", "bullets": ["■", "□", "▪", "▫"] },
             "rectangleNoTop": { "name": "Rectangle (no top)", "bullets": ["", "■", "□", "▪", "▫"] },
             "korean": { "name": "Korean", "bullets": ["*", "ᆫ", ":"] },

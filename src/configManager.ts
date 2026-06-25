@@ -72,11 +72,11 @@ function mergeProfiles(intProfiles: Record<string, BulletProfileEntry>, fileProf
 function getIntegratedProfiles(): Record<string, BulletProfileEntry> {
   const cfg = vscode.workspace.getConfiguration();
   const raw = cfg.get<Record<string, BulletProfileEntry | string[]>>('bulletFlow.bulletSetProfiles', {
-    default: { name: 'Default', bullets: ['•', '∘', '·', '>'] },
-    circle: { name: 'Circle', bullets: ['•', '∘', '·', '>'] },
-    circleNoTop: { name: 'Circle (no top)', bullets: ['', '•', '∘', '·', '>'] },
-    simple: { name: 'Simple', bullets: ['-', '•', '∘', '·', '>'] },
-    simpleNoTop: { name: 'Simple (no top)', bullets: ['', '-', '•', '∘', '·', '>'] },
+    default: { name: 'Default', bullets: ['•', '◦', '·', '>'] },
+    circle: { name: 'Circle', bullets: ['•', '◦', '·', '>'] },
+    circleNoTop: { name: 'Circle (no top)', bullets: ['', '•', '◦', '·', '>'] },
+    simple: { name: 'Simple', bullets: ['-', '•', '◦', '·', '>'] },
+    simpleNoTop: { name: 'Simple (no top)', bullets: ['', '-', '•', '◦', '·', '>'] },
     rectangle: { name: 'Rectangle', bullets: ['■', '□', '▪', '▫'] },
     rectangleNoTop: { name: 'Rectangle (no top)', bullets: ['', '■', '□', '▪', '▫'] },
     korean: { name: 'Korean', bullets: ['*', 'ᆫ', ':'] },
@@ -100,10 +100,10 @@ function updateStatusBar() {
 export function resolveBulletSet(): string[] {
   const cfg = vscode.workspace.getConfiguration();
   const direct = cfg.get<string[]>('bulletFlow.bulletSet');
-  if (!cachedProfiles) return direct || ['•', '∘', '·', '>'];
+  if (!cachedProfiles) return direct || ['•', '◦', '·', '>'];
   const active = cachedActiveProfile || cfg.get<string>('bulletFlow.activeProfile', 'default');
   const entry = cachedProfiles[active];
-  return (entry?.bullets || direct || ['•', '∘', '·', '>']).slice();
+  return (entry?.bullets || direct || ['•', '◦', '·', '>']).slice();
 }
 
 export function getBulletFlowConfig(): BulletFlowConfig {

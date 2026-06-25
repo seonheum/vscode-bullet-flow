@@ -4,7 +4,7 @@ Indentation 기반 계층을 bullet set으로 일괄 적용/교체하는 VS Code
 
 ## 기능
 핵심 기능:
- - 설정: `bulletFlow.bulletSet` (기본: `['•','∘','·','>']`)
+ - 설정: `bulletFlow.bulletSet` (기본: `['•','◦','·','>']`)
  - 기존 bullet 감지/제거 후 교체 (`bulletFlow.removeExisting` = true)
  - 별도 패턴 설정 없이 현재 활성 bulletSet 토큰만으로 기존 bullet 감지/제거
  - 들여쓰기 폭 자동 추론 (GCD) + 실패 시 fallback (`bulletFlow.indentSizeFallback`)
@@ -12,7 +12,7 @@ Indentation 기반 계층을 bullet set으로 일괄 적용/교체하는 VS Code
 프로필/구성:
  - 다중 프로필 지원 (`bulletFlow.bulletSetProfiles`, `bulletFlow.activeProfile`)
  - 워크스페이스 루트 `.bulletflow.json` 파일로 프로필 override/추가 (설정과 병합, 파일 우선)
- - 프로필 항목 구조: `{ "profileKey": { "name": "Display Name", "bullets": ["•", "∘", ...] } }`
+ - 프로필 항목 구조: `{ "profileKey": { "name": "Display Name", "bullets": ["•", "◦", ...] } }`
  - No-Top 변형 프로필 제공 (최상위 레벨 bullet 비움)
 
 명령 (Command Palette):
@@ -52,10 +52,10 @@ Indentation 기반 계층을 bullet set으로 일괄 적용/교체하는 VS Code
     :https://example.com/a
     :https://example.com/b
 ```
-설정 `["", "∘ ", "· "]` 적용 결과:
+설정 `["", "◦ ", "· "]` 적용 결과:
 ```
 Pending
-  ∘ ReadLater
+  ◦ ReadLater
     · https://example.com/a
     · https://example.com/b
 ```
@@ -72,8 +72,8 @@ Pending
 ```jsonc
 {
   "profiles": {
-    "default": { "name": "Default", "bullets": ["•", "∘", "·", ">"] },
-    "circleNoTop": { "name": "Circle (no top)", "bullets": ["", "•", "∘", "·", ">"] },
+    "default": { "name": "Default", "bullets": ["•", "◦", "·", ">"] },
+    "circleNoTop": { "name": "Circle (no top)", "bullets": ["", "•", "◦", "·", ">"] },
     "customArrows": { "name": "Arrows", "bullets": ["", "→", "⇒", "⇢"] }
   },
   "active": "customArrows"
