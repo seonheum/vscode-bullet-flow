@@ -87,5 +87,15 @@ npm run watch
 ```
 F5 로 확장 개발 호스트 실행 후 명령 테스트.
 
+
+## VSIX Packaging
+```bash
+npm install
+npm run compile
+npx vsce package --out out/bulletflow-0.0.2.vsix
+```
+
+Generated file: `out/bulletflow-0.0.2.vsix`
+
 ## 라이선스
 MIT
